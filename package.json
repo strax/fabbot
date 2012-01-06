@@ -1,0 +1,10 @@
+{
+  "name": "james",
+  "version": "0.0.1",
+  "description": "A personal IRC assistant",
+  "author": "Sami Kukkonen <sami.matias.kukkonen@gmail.com>",
+  "dependencies": {
+    "irc": "",
+    "underscore": ""
+  }
+}
