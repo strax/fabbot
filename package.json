@@ -4,7 +4,6 @@
   "description": "A personal IRC assistant",
   "author": "Sami Kukkonen <sami.matias.kukkonen@gmail.com>",
   "dependencies": {
-    "irc": "",
-    "underscore": ""
+    "irc": "0.3"
   }
 }
