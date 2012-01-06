@@ -1,0 +1,7 @@
+{
+  "nick": "fabbot",
+  "host": "yourhost.com",
+  "port": 6667,
+  "channels": ["#fabbot"],
+  "secure": false
+}
