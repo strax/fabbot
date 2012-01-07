@@ -1,0 +1,7 @@
+{
+  "nick": "fabbot",
+  "host": "embyr.ma.us.fyrechat.net",
+  "port": 6667,
+  "channels": ["#vana"],
+  "secure": false
+}
