@@ -1,5 +1,4 @@
-var irc = require('irc'),
-    _ = require('underscore')
+var irc = require('irc')
 
 var config = JSON.parse(require('fs').readFileSync('./config.json'))
 
