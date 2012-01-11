@@ -5,6 +5,7 @@
   "author": "Sami Kukkonen <sami.matias.kukkonen@gmail.com>",
   "dependencies": {
     "irc": "0.3",
-    "redis": ""
+    "redis": "",
+    "moment": ""
   }
 }

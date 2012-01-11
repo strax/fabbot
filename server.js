@@ -1,33 +1,32 @@
 var irc = require('irc'),
-    redis = require('redis'),
-    util = require('util'),
-    db = redis.createClient()
+    stats = require('./lib/stats')
 
 var config = JSON.parse(require('fs').readFileSync('./config.json'))
 
 var bot = new irc.Client(config.host, config.nick, {
   port: config.port,
-  debug: true,
+  debug: false,
   channels: config.channels,
   realName: 'Fabbot',
   userName: 'fabbot'
 })
 
 bot.on('error', function(message) {
-  console.error('ERROR: %s: %s', message.command, message.args.join(', '));
+  console.error('ERROR: %s: %s', message.command, message.args.join(', '))
 })
 
+bot.plugins = [
+  require('./lib/stats'),
+  require('./lib/uptime'),
+  require('./lib/help')
+]
+
 bot.on('message', function(from, to, message) {
-  if(/^\!counts/i.test(message)) {
-    db.hgetall("stats:" + to, function(err, stats) { 
-      var counts = []
-      for(user in stats) counts.push(user + ": " + stats[user])
-           
-      bot.notice(from, to + " word counts: " + counts.join(", "))
+  if(message.charAt(0) == '!') {
+    bot.plugins.forEach(function(plugin) {
+      plugin(bot, from, to, message)
     })
-  } else {
-    var count = message.split(' ').length || 1
-    
-    db.hincrby("stats:" + to, from, count, redis.print);
   }
 })
+
+console.log("> Fabbot started")
